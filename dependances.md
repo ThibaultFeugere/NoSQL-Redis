@@ -25,3 +25,7 @@
 ## Installation de nodemailer
 
 `npm install nodemailer`
+
+## Installation de redis
+
+`npm install redis`

@@ -8,6 +8,8 @@
 
 ## Configuration de l'environnement de dev
 
+Allez dans le dossier `app/` avec la commande `cd app/`.
+
 ### Initialisation des valeurs du fichier de configuration
 
 Pour des raisons de sécurité, nous ne pouvons pas versionner les informations sensibles. De ce fait, il est de bonne pratique de créer un squelette de configuration et de le copier sans le versionner sur l'environnement de développement ou de production.
@@ -26,7 +28,7 @@ Ensuite, remplacez les valeurs génériques.
 
 ## Infrastructure
 
-### 
+### question infra
 
 ## Sécurité informatique 
 
