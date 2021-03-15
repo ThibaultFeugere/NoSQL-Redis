@@ -58,5 +58,7 @@ le mot de passe à usage unique (One Time Password) est un mot de passe qui est 
 Un OTP est générés sur une Base de temps, d'un algo mathématique et au bout d'un certains nombre d'essais infructueux il est regénéré pour éviter les attaques de bruteforce.
 
 Voici un petit schéma pour comprendre l'usage du OTP 
+
+
 ![](https://image.codeforgeek.com/wp-content/uploads/2016/12/laravelmobilenumber.png)
 
