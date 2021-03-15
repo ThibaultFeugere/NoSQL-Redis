@@ -1,8 +1,19 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const nodemailer = require('nodemailer');
+const config = require('./config/config.json');
 
-// Importations des routes
+// SMTP Test
+nodemailer.createTransport(config.gmailConfig).transporter.verify(function(error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
+
+// Import of routes
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');

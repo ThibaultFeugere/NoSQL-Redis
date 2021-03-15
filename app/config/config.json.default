@@ -1,0 +1,10 @@
+{
+    "gmailConfig": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "auth": {
+            "user": "intersport.team.france@gmail.com",
+            "pass": "ACCOUNT_PASSWORD"
+            }
+    }
+}

@@ -20,7 +20,9 @@ Pour des raisons de sécurité, nous ne pouvons pas versionner les informations 
 
 `cp config/config.json.default config/config.json`
 
-Ensuite, remplacez les valeurs génériques.
+#### Serveur mail
+
+Changer la valeur "ACCOUNT_PASSWORD" de `"pass": "ACCOUNT_PASSWORD"`.
 
 ### Installation des dépendances
 
