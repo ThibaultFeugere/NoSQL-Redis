@@ -44,7 +44,24 @@ Voici un petit schéma explicatif d'un hash bcrypt
 
 ![https://asecuritysite.com/public/bc.png](https://asecuritysite.com/public/bc.png)
 
+un grand homme à dit un jour : 
+
+@hessman "pourquoi bcrypt ? fais un `hashcat --benchmark` et tu verras"
+
+![](https://media.discordapp.net/attachments/494091005872832523/821039297397522442/unknown.png?width=461&height=575)
+
+Sur ce screen on voit qu'une RTX 3070 bruteforce plus rapidement SHA256 que du bcrypt donc @hessman nous a montré que bcrypt est plus lent à bruteforcer. 
+
 
 ## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
-@steven
+le mot de passe à usage unique (One Time Password) est un mot de passe qui est valable poour une session/transaction.
+
+
+Un OTP est générés sur une Base de temps, d'un algo mathématique et au bout d'un certains nombre d'essais infructueux il est regénéré pour éviter les attaques de bruteforce.
+
+Voici un petit schéma pour comprendre l'usage du OTP 
+
+
+![](https://image.codeforgeek.com/wp-content/uploads/2016/12/laravelmobilenumber.png)
+
