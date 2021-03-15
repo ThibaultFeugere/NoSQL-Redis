@@ -22,6 +22,9 @@
 
 `npm install express`
 
+## Installation de bcrypt
+
+`npm install bcrypt`
 
 ## Bcrypt 
 
