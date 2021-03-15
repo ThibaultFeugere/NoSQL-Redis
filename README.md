@@ -41,7 +41,11 @@ Voici un petit schéma explicatif d'un hash bcrypt
 
 ![https://asecuritysite.com/public/bc.png](https://asecuritysite.com/public/bc.png)
 
+un grand homme à dit un jour : 
 
+@hessman "pourquoi bcrypt ? fais un `hashcat --benchmark` et tu verras 
+
+![](https://media.discordapp.net/attachments/494091005872832523/821039297397522442/unknown.png?width=461&height=575)
 ## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
 @steven
