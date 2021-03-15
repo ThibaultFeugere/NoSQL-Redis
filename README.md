@@ -53,4 +53,10 @@ Sur ce screen on voit qu'une RTX 3070 bruteforce plus rapidement SHA256 que du b
 ## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
 le mot de passe à usage unique (One Time Password) est un mot de passe qui est valable poour une session/transaction.
+
+
 Un OTP est générés sur une Base de temps, d'un algo mathématique et au bout d'un certains nombre d'essais infructueux il est regénéré pour éviter les attaques de bruteforce.
+
+Voici un petit schéma pour comprendre l'usage du OTP 
+![](https://image.codeforgeek.com/wp-content/uploads/2016/12/laravelmobilenumber.png)
+
