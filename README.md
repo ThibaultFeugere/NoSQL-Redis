@@ -6,6 +6,10 @@
 - DEMANECHE Antonin
 - FEUGERE Thibault
 
+## Arborescence du projet
+
+// TODO : @louis ajouter un `tree` effectué à la racine du projet.
+
 ## Configuration de l'environnement de dev
 
 Allez dans le dossier `app/` avec la commande `cd app/`.
