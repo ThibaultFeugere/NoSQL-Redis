@@ -43,9 +43,12 @@ Voici un petit schéma explicatif d'un hash bcrypt
 
 un grand homme à dit un jour : 
 
-@hessman "pourquoi bcrypt ? fais un `hashcat --benchmark` et tu verras 
+@hessman "pourquoi bcrypt ? fais un `hashcat --benchmark` et tu verras"
 
 ![](https://media.discordapp.net/attachments/494091005872832523/821039297397522442/unknown.png?width=461&height=575)
+
+Sur ce screen on voit qu'une RTX 3070 bruteforce plus rapidement SHA256 que du bcrypt donc @hessman nous a montré que bcrypt est plus lent à bruteforcer. 
+
+
 ## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
-@steven
