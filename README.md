@@ -24,7 +24,10 @@
 
 
 ## Bcrypt 
-le bcrypt est une fonction de hachage qui est basée sur l'algorithme blowfish. 
+
+## Le mot de passe est stocké en bcrypt, pourquoi ?
+
+Le bcrypt est une fonction de hachage qui est basée sur l'algorithme blowfish. 
 
 
 Bcrypt est une fonction adaptative car on peut augmenter le nombre d'itération pour la rendre plus lente, comme cela elle continue à être resistante aux attaques par bruteforce même avec l'augmentation de la puissance de calcul.
@@ -37,3 +40,7 @@ Pour cet algo il consite dans un premier temps à créer les sous-clefs grâce �
 Voici un petit schéma explicatif d'un hash bcrypt 
 
 ![https://asecuritysite.com/public/bc.png](schema)
+
+## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
+
+@steven
