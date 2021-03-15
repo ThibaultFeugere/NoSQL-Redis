@@ -34,4 +34,6 @@ Blowfish est un algorithme de chiffrement par bloc pour sa phase d'établissemen
 
 Pour cet algo il consite dans un premier temps à créer les sous-clefs grâce à la clef et au sel. Ensuite un certain nombre de tours de l'algorithme standard blowfish sont appliqués avec alternativement le sel et la clef. Chaque tour commence avec l'état des sous-clefs du tour précédent. Cette fonction ne rend pas l'algorithme plus puossant que blowfish mais cela permet de choisir le nombre d'itérations ce qui le rend plus lent et s'il est plus lent cela permet de dissuader les attaques rainbow table et brute force
 
+Voici un petit schéma explicatif d'un hash bcrypt 
 
+![https://asecuritysite.com/public/bc.png](schema)
