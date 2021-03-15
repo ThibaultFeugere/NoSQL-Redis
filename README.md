@@ -39,7 +39,8 @@ Pour cet algo il consite dans un premier temps à créer les sous-clefs grâce �
 
 Voici un petit schéma explicatif d'un hash bcrypt 
 
-![https://asecuritysite.com/public/bc.png](schema)
+![https://asecuritysite.com/public/bc.png](https://asecuritysite.com/public/bc.png)
+
 
 ## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
