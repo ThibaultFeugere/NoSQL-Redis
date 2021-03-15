@@ -17,22 +17,27 @@ const emailDb = "thibault.feugere@ynov.com";
 router.post('/', function (req, res, next) {
   res.setHeader('Content-Type', 'application/json');
   if (req.body.email == emailDb) {
-    const mailOptions = {
-      from: 'intersport.team.france@gmail.com',
-      to: req.body.email,
-      subject: 'Your OTP !',
-      text: 'Your OTP is : ' + otp,
-      html: 'Your OTP is : <strong>' + otp + '</strong>'
-    };
-    
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response + ' with OTP : ' + otp);
-        res.end('Email sent !');
-      }
-    });
+    if (req.body.telegram) {
+        console.log('Code sent to telegram');
+        res.end('Code sent to telegram');
+    } else {
+      const mailOptions = {
+        from: 'intersport.team.france@gmail.com',
+        to: req.body.email,
+        subject: 'Your OTP !',
+        text: 'Your OTP is : ' + otp,
+        html: 'Your OTP is : <strong>' + otp + '</strong>'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response + ' with OTP : ' + otp);
+          res.end('Email sent !');
+        }
+      });
+    }
   } else {
     res.end('Error');
   }
