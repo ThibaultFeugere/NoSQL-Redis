@@ -5,20 +5,23 @@
   "main": "app.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "ioredis": "^4.24.2",
+    "nodemailer": "^6.5.0",
     "redis": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/thibaultfeugere/no-sql-tp-redis.git"
   },
-  "author": "Antonin, Louis, Thibault",
+  "author": "Antonin, Louis, Thibault, Steven",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/thibaultfeugere/no-sql-tp-redis/issues"
