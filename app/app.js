@@ -3,15 +3,7 @@ const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const config = require('./config/config.json');
-
-// SMTP Test
-nodemailer.createTransport(config.gmailConfig).transporter.verify(function(error, success) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Server is ready to take our messages");
-  }
-});
+const redis = require('redis');
 
 // Import of routes
 const indexRouter = require('./routes/index');
@@ -25,8 +17,31 @@ const app = express();
 const PORT = 1337;
 
 app.listen(PORT, () => {
-  console.log("Express Node.js server running on port " + PORT)
+  console.log("✅ Express Node.js server running on port " + PORT)
 })
+
+const client = redis.createClient();
+
+client.on("error", function(error) {
+  console.error(`❗️ Redis Error: ${error}`)
+})
+
+client.on("ready", () => {
+  console.log('✅ redis have ready !')
+})
+
+client.on("connect", () => {
+  console.log('✅ connect redis success !')
+})
+
+// SMTP Test
+nodemailer.createTransport(config.gmailConfig).transporter.verify(function(error, success) {
+  if (error) {
+    console.log(`❗️ SMTP Error: ${error}`);
+  } else {
+    console.log("✅ Server is ready to take our messages");
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
