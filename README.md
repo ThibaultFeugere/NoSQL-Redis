@@ -6,29 +6,39 @@
 - DEMANECHE Antonin
 - FEUGERE Thibault
 
-## Installation de Redis
+## Arborescence du projet
 
-`npm install redis`
+// TODO : @louis ajouter un `tree` effectué à la racine du projet.
 
-## Installation de IoRedis
+## Configuration de l'environnement de dev
 
-`npm install ioredis`
+Allez dans le dossier `app/` avec la commande `cd app/`.
 
-## Installation de http-errors
+### Initialisation des valeurs du fichier de configuration
 
-`npm install http-errors`
+Pour des raisons de sécurité, nous ne pouvons pas versionner les informations sensibles. De ce fait, il est de bonne pratique de créer un squelette de configuration et de le copier sans le versionner sur l'environnement de développement ou de production.
 
-## Installation de Express JS
+`cp config/config.json.default config/config.json`
 
-`npm install express`
+#### Serveur mail
 
-## Installation de bcrypt
+Changer la valeur "ACCOUNT_PASSWORD" de `"pass": "ACCOUNT_PASSWORD"`.
 
-`npm install bcrypt`
+### Installation des dépendances
 
-## Bcrypt 
+`npm install`
 
-## Le mot de passe est stocké en bcrypt, pourquoi ?
+### Démarrage du serveur
+
+`npm start`
+
+## Infrastructure
+
+### question infra
+
+## Sécurité informatique 
+
+### Le mot de passe est stocké en bcrypt, pourquoi ?
 
 Le bcrypt est une fonction de hachage qui est basée sur l'algorithme blowfish. 
 
@@ -53,14 +63,14 @@ un grand homme à dit un jour :
 Sur ce screen on voit qu'une RTX 3070 bruteforce plus rapidement SHA256 que du bcrypt donc @hessman nous a montré que bcrypt est plus lent à bruteforcer. 
 
 
-## Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
+### Au bout de 3 essais infructueux l'OTP est invalidé, un nouveau est envoyé. Pourquoi ?
 
 le mot de passe à usage unique (One Time Password) est un mot de passe qui est valable poour une session/transaction.
 
 
 Un OTP est générés sur une Base de temps, d'un algo mathématique et au bout d'un certains nombre d'essais infructueux il est regénéré pour éviter les attaques de bruteforce.
 
-Voici un petit schéma pour comprendre l'usage du OTP 
+Voici un petit schéma pour comprendre l'usage du OTP.
 
 
 ![](https://image.codeforgeek.com/wp-content/uploads/2016/12/laravelmobilenumber.png)
