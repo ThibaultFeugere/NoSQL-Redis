@@ -2,13 +2,14 @@
 
 ## Equipe
 
-- MAURY Louis
 - DEMANECHE Antonin
+- DIAS Steven
 - FEUGERE Thibault
+- MAURY Louis
 
 ## Arborescence du projet
 
-// TODO : @louis ajouter un `tree` effectué à la racine du projet.
+// TODO : ajouter un `tree` effectué à la racine du projet.
 
 ## Configuration de l'environnement de dev
 
