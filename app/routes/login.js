@@ -1,10 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
+const config = require('../config/config.json');
+const redis = require('redis');
 
-// Temporary because i am waiting the Redis DB
-const emailDb = "thibault.feugere@ynov.com";
-const hashDb = "$2b$12$id5DcgsbZfK2B65VKvWhdezakOzuVpuUeMj7RpKq11ZOWcSOY9qhu"; // hash = "mdp"
+const client = redis.createClient(config.redisConfig);
 
 router.post('/', function (req, res, next) {
     res.setHeader('Content-Type', 'application/json');
@@ -13,14 +13,20 @@ router.post('/', function (req, res, next) {
         const email = req.body.email;
         const password = req.body.password;
 
-        bcrypt.compare(password, hashDb, function(err, result) {
-          if (email == emailDb && result == true) {
-            res.send('Email et mdp valide');
-          } else {
-            res.send('Email ou mdp invalide');
-          }
+        client.hgetall("email:" + email, function (err, obj) {
+            if (null !== obj) {
+                bcrypt.compare(password, obj.password, function(err, result) {
+                    if (email == obj.email && result == true) {
+                        res.send('Vous êtes connecté, pour vous déconnecter, rendez-vous sur /logout');
+                    } else {
+                        res.send('Email ou mdp invalide');
+                    }
+                });
+            } else {
+                res.send('Mauvais email ou mot de passe')
+            }
         });
-  }
+    }
 });
 
 module.exports = router;

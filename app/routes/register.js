@@ -1,5 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const config = require('../config/config.json');
+const redis = require('redis');
+
+const client = redis.createClient(config.redisConfig);
+
 const saltRounds = 12;
 const router = express.Router();
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -14,6 +19,9 @@ router.post('/', function (req, res, next) {
         if (emailRegex.test(email)) {
             bcrypt.hash(password, saltRounds, function(err, hash) {
                 res.send(email + ' ' + password + ' ' + hash);
+                client.sadd("users", "email:" + email);
+                client.hmset("email:" + email, "email", email, "password", hash);
+                client.quit();
             });
         } else {
             res.end("Error : 'email' value need to be valid.");
