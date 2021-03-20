@@ -9,21 +9,25 @@ const client = redis.createClient(config.redisConfig);
 router.post('/', function (req, res, next) {
     res.setHeader('Content-Type', 'application/json');
     if (req.body.email && req.body.password) {
-        // Store vars
         const email = req.body.email;
         const password = req.body.password;
-
         client.hgetall("email:" + email, function (err, obj) {
             if (null !== obj) {
-                bcrypt.compare(password, obj.password, function(err, result) {
-                    if (email == obj.email && result == true) {
-                        res.send('Vous êtes connecté, pour vous déconnecter, rendez-vous sur /logout');
-                    } else {
-                        res.send('Email ou mdp invalide');
-                    }
-                });
+                if (obj.login == 0) {
+                    bcrypt.compare(password, obj.password, function(err, result) {
+                        if (email == obj.email && result == true) {
+                            client.hset("email:" + email, "login", 1, function (err, obj) {
+                                res.send('Vous êtes connecté, pour vous déconnecter, rendez-vous sur /logout.');
+                            });
+                        } else {
+                            res.send('Email ou mdp invalide.');
+                        }
+                    });
+                } else {
+                    res.send('Vous êtes déjà connecté.')
+                }
             } else {
-                res.send('Mauvais email ou mot de passe')
+                res.send('Mauvais email ou mot de passe.')
             }
         });
     }

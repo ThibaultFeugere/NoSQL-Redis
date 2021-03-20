@@ -13,14 +13,13 @@ const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]
 router.post('/', function (req, res, next) {
     res.setHeader('Content-Type', 'application/json');
     if (req.body.email && req.body.password) {
-        // Store vars
         const email = req.body.email;
         const password = req.body.password;
         if (emailRegex.test(email)) {
             bcrypt.hash(password, saltRounds, function(err, hash) {
-                res.send(email + ' ' + password + ' ' + hash);
+                res.send("Compté créé, veuillez vous connecter sur /login");
                 client.sadd("users", "email:" + email);
-                client.hmset("email:" + email, "email", email, "password", hash);
+                client.hmset("email:" + email, "email", email, "password", hash, "login", 0, "otp", "", "otpValidity", 0);
                 client.quit();
             });
         } else {
