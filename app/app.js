@@ -18,21 +18,21 @@ const PORT = 1337;
 
 app.listen(PORT, () => {
   console.log("✅ Express Node.js server running on port " + PORT)
-})
+});
 
-const client = redis.createClient();
+const client = redis.createClient(config.redisConfig);
 
 client.on("error", function(error) {
   console.error(`❗️ Redis Error: ${error}`)
-})
+});
 
 client.on("ready", () => {
   console.log('✅ redis have ready !')
-})
+});
 
 client.on("connect", () => {
   console.log('✅ connect redis success !')
-})
+});
 
 // SMTP Test
 nodemailer.createTransport(config.gmailConfig).transporter.verify(function(error, success) {

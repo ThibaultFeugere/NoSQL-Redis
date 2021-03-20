@@ -77,3 +77,8 @@ Voici un petit schéma pour comprendre l'usage du OTP.
 
 ![](https://image.codeforgeek.com/wp-content/uploads/2016/12/laravelmobilenumber.png)
 
+## Gestion de Docker
+
+### Nettoyer tous les containers
+
+Pour supprimer tous les containers, même ceux allumés : `docker container stop $(docker container ls -aq) && docker system prune -af --volumes`.
