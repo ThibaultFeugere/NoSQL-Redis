@@ -23,15 +23,16 @@ app.listen(PORT, () => {
 const client = redis.createClient(config.redisConfig);
 
 client.on("error", function(error) {
-  console.error(`❗️ Redis Error: ${error}`)
-});
-
-client.on("ready", () => {
-  console.log('✅ redis have ready !')
+  console.error(`❗️ Redis Error: ${error}`);
+  client.quit();
 });
 
 client.on("connect", () => {
-  console.log('✅ connect redis success !')
+  console.log('✅ connect redis success !');
+  client.on("ready", () => {
+    console.log('✅ redis have ready !');
+    client.quit();
+  });
 });
 
 // SMTP Test
