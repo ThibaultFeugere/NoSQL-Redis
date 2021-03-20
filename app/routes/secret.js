@@ -15,9 +15,11 @@ router.post('/', function (req, res, next) {
           if (null !== obj) {
                   bcrypt.compare(password, obj.password, function(err, result) {
                       if (email == obj.email && result == true) {
-                          client.hset("email:" + email, "login", 0, function () {
-                              res.send('Vous êtes déconnecté, pour vous reconnecter rendez-vous sur /login.');
-                          });
+                          if (obj.login == 1) {
+                            res.send("IL Y A ANGUILLE SOUS RÔCHE !")
+                          } else {
+                              res.send("Veuillez d'abord vous connecter via /login pour accéder à cette page.")
+                          }
                       } else {
                           res.send('Mauvais email ou mot de passe.');
                       }

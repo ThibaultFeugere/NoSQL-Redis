@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
                                 res.send('Vous êtes connecté, pour vous déconnecter, rendez-vous sur /logout.');
                             });
                         } else {
-                            res.send('Email ou mdp invalide.');
+                            res.send('Mauvais email ou mot de passe.');
                         }
                     });
                 } else {
