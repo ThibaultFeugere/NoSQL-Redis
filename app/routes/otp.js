@@ -1,4 +1,3 @@
-const { text } = require('body-parser');
 const express = require('express');
 const router = express.Router();
 const otpGenerator = require('otp-generator')
@@ -11,13 +10,13 @@ const transporter = nodemailer.createTransport(
 
 const otp = otpGenerator.generate(6, { upperCase: true, specialChars: false });
 
-// Temporary because i am waiting the Redis DB
+// TODO : Remove | Temporary because i am waiting the Redis DB
 const emailDb = "thibault.feugere@ynov.com";
 
 router.post('/', function (req, res, next) {
   res.setHeader('Content-Type', 'application/json');
   if (req.body.email == emailDb) {
-    if (req.body.telegram) {
+    if (req.body.telegram == 1) {
         console.log('Code sent to telegram');
         res.end('Code sent to telegram');
     } else {
