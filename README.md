@@ -1,5 +1,11 @@
 # No SQL - TP Redis
 
+## Objectif
+
+L'objectif de ce TP sur deux séances est de mettre en pratique une application qui utilise Redis tout en respectant les bonnes pratiques de sécurité informatique.
+
+De ce fait, il ne faut pas être sensible aux injections NoSQL et avoir une infrastructure solide (1 master, 3 replicas).
+
 ## Equipe
 
 - DEMANECHE Antonin
