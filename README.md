@@ -43,7 +43,13 @@ Changer la valeur "ACCOUNT_PASSWORD" de `"pass": "ACCOUNT_PASSWORD"`.
 
 ## Infrastructure
 
-### question infra
+### Quelle est votre choix de stratégie pour la mise en cluster ? Pourquoi ?
+
+Pour notre stratégie de mise en cluster nous avons décidé d’utiliser Docker. C’est un service de clustering complet qui permet une grande manipulation de son cluster et une initialisation rapide.
+
+Docker nous permettrait de gérer correctement la persistance des données ainsi que les trois nœuds du cluster. Si un nœud vient à être endommagé nous pouvons agir rapidement afin de rétablir celui-ci.
+
+De plus, c'est une technologie que nous avons utilisée plus d'une fois.
 
 ## Sécurité informatique 
 

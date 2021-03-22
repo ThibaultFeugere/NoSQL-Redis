@@ -12,7 +12,7 @@ services:
           - ALLOW_EMPTY_PASSWORD=yes
       volumes:
           - ./data/redis:/bitnami
-          - ./data/redis/conf/redis.conf:/opt/bitnami/redis/conf/redis.conf
+          - ./redis.conf:/opt/bitnami/redis/conf/redis.conf
 
    redis-replica:
       image: redis:alpine
@@ -29,7 +29,22 @@ services:
           - ALLOW_EMPTY_PASSWORD=yes
       deploy:
           replicas: 3
-        
+   app:
+      image: node:alpine3.13
+      restart: on-failure
+      ports:
+          - '1337:1337'
+      links:
+          - redis-master
+      networks:
+          - red_net
+      volumes:
+          - ./app:/App
+      command: "sh -c 'npm install && npm start'"
+      working_dir: /App
+      tty: true
+
+
 networks:
     red_net:
        driver: bridge
