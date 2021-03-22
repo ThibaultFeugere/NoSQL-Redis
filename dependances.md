@@ -26,10 +26,6 @@
 
 `npm install nodemailer`
 
-## Installation de redis
-
-`npm install redis`
-
 ## Installation de Telegram
 
 `npm install node-telegram-bot-api`
