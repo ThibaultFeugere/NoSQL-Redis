@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
                     bcrypt.hash(password, saltRounds, function(err, hash) {
                         res.send("Compté créé, veuillez vous connecter sur /login");
                         client.sadd("users", "email:" + email);
-                        client.hmset("email:" + email, "email", email, "password", hash, "login", 0, "otp", "", "otpValidity", 0);
+                        client.hmset("email:" + email, "email", email, "password", hash, "login", 0, "otp", "", "otpValidity", 0, "otpTries", 0);
                     });
                 } else {
                     res.send("L'inscription n'a pas pu aboutir...")
