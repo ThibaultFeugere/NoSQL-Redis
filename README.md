@@ -49,7 +49,7 @@ Pour notre stratégie de mise en cluster nous avons décidé d’utiliser Docker
 
 Docker nous permettrait de gérer correctement la persistance des données ainsi que les trois nœuds du cluster. Si un nœud vient à être endommagé nous pouvons agir rapidement afin de rétablir celui-ci.
 
-De plus, c'est une technologie que nous avons utilisée plus d'une fois et que nous commençons à maîtriser.
+De plus, c'est une technologie que nous avons utilisée plus d'une fois.
 
 ## Sécurité informatique 
 
