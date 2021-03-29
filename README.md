@@ -53,6 +53,36 @@ De plus, c'est une technologie que nous avons utilisée plus d'une fois.
 
 ## Sécurité informatique 
 
+### Prendre en compte le TOP 10 OWASP
+
+#### Injection
+
+Les chaines de caractères fournies par les utilisateurs, comme les emails, sont vérifiées par des REGEX.
+
+#### Broken Authentication
+
+Suite à quelques tests, l'authentification nous semble correcte. Un audit, un programme de bug bounty ou encore la publication du code source sur un repository publique peut être une bonne manière de vérifier cela.
+
+#### Sensitive Data Exposure
+
+Le code ne divulgue aucune informations lors de l'utilisation de l'outil. Les messages ont été pensé pour ne révéler aucune information sensible telle que "Email incorecte" ou encore "Mot de passe incorrecte". 
+
+En effet, ces informations en disent trop sur le contenu de notre base de données.
+
+#### XML External Entities (XXE)
+
+Nous ne sommes pas concerné.
+
+#### Broken Access Control
+
+Nous n'avons pas de système de grade/groupes. Il y a les utilisateurs connectés et les utilisateurs non connectés.
+
+#### Security Misconfiguration
+
+// TODO
+
+Sources : https://owasp.org/www-project-top-ten/
+
 ### Le mot de passe est stocké en bcrypt, pourquoi ?
 
 Le bcrypt est une fonction de hachage qui est basée sur l'algorithme blowfish. 
