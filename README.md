@@ -4,7 +4,7 @@
 
 L'objectif de ce TP sur deux séances est de mettre en pratique une application qui utilise Redis tout en respectant les bonnes pratiques de sécurité informatique.
 
-De ce fait, il ne faut pas être sensible aux injections NoSQL et avoir une infrastructure solide (1 master, 3 replicas).
+De ce fait, il ne faut pas être sensible aux injections NoSQL et avoir une infrastructure solide (1 master, 2 replicas).
 
 ## Equipe
 
@@ -46,8 +46,6 @@ no-sql-tp-redis
 │   ├── setup
 │   └── slave.conf
 └── TP-redis.pdf
-
-448 directories, 3916 files
 ```
 
 ## Configuration de l'environnement de dev
@@ -61,6 +59,8 @@ Copier le fichier `docker-compose.yml.dist` : `cp docker-compose.yml.dist docker
 Allez dans le dossier `app/` avec la commande `cd app/`.
 
 `cp config/config.json.default config/config.json`
+
+Vous pouvez renseigner la valeur du port et du mot de passe du serveur redis.
 
 #### Serveur mail
 
@@ -98,7 +98,7 @@ Suite à quelques tests, l'authentification nous semble correcte. Un audit, un p
 
 #### Sensitive Data Exposure
 
-Le code ne divulgue aucune informations lors de l'utilisation de l'outil. Les messages ont été pensé pour ne révéler aucune information sensible telle que "Email incorecte" ou encore "Mot de passe incorrecte". 
+Le code ne divulgue aucune informations lors de l'utilisation de l'outil. Les messages ont été pensé pour ne révéler aucune information sensible telle que "Email incorrect" ou encore "Mot de passe incorrect". 
 
 En effet, ces informations en disent trop sur le contenu de notre base de données.
 
@@ -112,7 +112,28 @@ Nous n'avons pas de système de grade/groupes. Il y a les utilisateurs connecté
 
 #### Security Misconfiguration
 
-// TODO
+Du hardening a été mis en place sur la partie Redis. Les fichiers versionnés ne contiennent pas d'informations sensibles. Les bonnes pratiques ont été respectées.
+
+#### Cross-Site Scripting (XSS)
+
+Notre application n'est pas concernée. L'execution de javascript en retour de commande n'a pas lieu.
+
+#### Insecure Deserialization
+
+Nous n'executons pas de code sur le serveur. Il n'y a pas la présence de fonctions tel que eval() qui utilisent comme valeur des éléments modifiables par l'utilisateur.
+
+#### Using Components with Known Vulnerabilities
+
+Nous avons audité notre application avec `npm audit` :
+
+```
+/App # npm audit
+found 0 vulnerabilities
+```
+
+#### Insufficient Logging & Monitoring
+
+Les logs par défauts du système d'exploitation nous semblent suffisants par rapport à l'envergure du projet.
 
 Sources : https://owasp.org/www-project-top-ten/
 
