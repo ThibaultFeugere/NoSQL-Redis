@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
     // On vérifie qu'il y a bien un email de fournit dans la requête POST
     if (req.body.email !== undefined && req.body.email !== null) {
         // On vérifie que l'email est au format correcte
-        if (emailRegex.test(email)) {
+        if (emailRegex.test(req.body.email)) {
             // On cherche l'email renseignée dans le base de données
             client.hgetall("email:" + req.body.email, function (err, obj) {
                 // On vérifie qu'on a trouvé l'email dans la base de données
