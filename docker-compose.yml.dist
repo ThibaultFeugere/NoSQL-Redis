@@ -10,14 +10,18 @@ services:
       environment:
           - REDIS_REPLICATION_MODE=master
           - ALLOW_EMPTY_PASSWORD=yes
+          - BIND=redis-master
       volumes:
-          - ./data/redis:/bitnami
-          - ./redis.conf:/opt/bitnami/redis/conf/redis.conf
+          - ./databases:/databases
+          - ./redis_conf.d/redis.conf:/etc/redis.conf
+          - ./redis_conf.d/setup:/usr/share/setup
+      command: redis-server /etc/redis.conf
 
    redis-replica:
       image: redis:alpine
+      restart: on-failure
       ports:
-          - '6380-6382:6379'
+          - '6380-6381:6379'
       depends_on:
           - redis-master
       networks:
@@ -26,9 +30,16 @@ services:
           - REDIS_REPLICATION_MODE=slave
           - REDIS_MASTER_HOST=redis-master
           - REDIS_MASTER_PORT_NUMBER=6379
+          - BIND=redis-master
           - ALLOW_EMPTY_PASSWORD=yes
+      volumes:
+          - ./databases:/databases
+          - ./redis_conf.d/redis_slave.conf:/etc/redis.conf
+      command: redis-server /etc/redis.conf
+      
       deploy:
-          replicas: 3
+          replicas: 2
+
    app:
       image: node:alpine3.13
       restart: on-failure
@@ -48,3 +59,4 @@ services:
 networks:
     red_net:
        driver: bridge
+

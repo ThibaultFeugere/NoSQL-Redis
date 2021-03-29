@@ -1,0 +1,2 @@
+#!/bin/sh
+ip a | grep 172.21.0 | awk -F ' ' '{print "bind " substr($2, 1, length($2)-3)}' >> /etc/redis.conf
